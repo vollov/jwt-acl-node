@@ -1,0 +1,23 @@
+## ACL concepts
+ACL - access control list
+object  - resource to be controlled, e.g. an Url
+subject - each entry of acl = subject(user) + operations
+
+
+
+
+acl.allow('guest', 'blogs', 'view') 
+acl.allow('guest', 'comments', 'view')
+==> var widget = new Widget({ ... });
+==> widget.setAccess('guest', ['blogs', 'comments']);
+==> var guest = User();
+==> guest.setAccess(widget, ['read', 'write', 'delete']);
+ 
+// allow function accepts arrays as any parameter 
+acl.allow('member', 'blogs', ['edit','view', 'delete'])
+
+
+var mongoose = require('mongoose'),
+    acl = require('acl');
+
+acl = new acl(new acl.mongodbBackend(mongoose.connection.db, 'acl_'));
