@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var _ = require('underscore');
 
 require('./models/Users');
-var Widget = mongoose.model('Widget');
+//var Widget = mongoose.model('Widget');
 var User = mongoose.model('User');
 
 var cfg = require('./config.js');

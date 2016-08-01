@@ -6,14 +6,14 @@ var cfg = require('../config');
 var _ = require('underscore');
 var log = require('../lib/logger');
 
-var acl = require('mongoose-acl');
-
-var WidgetSchema = new mongoose.Schema({});
-WidgetSchema.plugin(acl.object, {
-	path: '_acl'
-});
-
-mongoose.model('Widget', WidgetSchema);
+//var acl = require('mongoose-acl');
+//
+//var WidgetSchema = new mongoose.Schema({});
+//WidgetSchema.plugin(acl.object, {
+//	path: '_acl'
+//});
+//
+//mongoose.model('Widget', WidgetSchema);
 
 var UserSchema = new mongoose.Schema({
 	username : {
@@ -21,16 +21,16 @@ var UserSchema = new mongoose.Schema({
 		lowercase : true,
 		unique : true
 	},
-	roles: [String],
+//	roles: [String],
 	hash : String,
 	salt : String
 });
 
-UserSchema.plugin(acl.subject, {
-	key : function() {
-		return 'user:' + this._id;
-	}
-});
+//UserSchema.plugin(acl.subject, {
+//	key : function() {
+//		return 'user:' + this._id;
+//	}
+//});
 
 UserSchema.methods.generateJWT = function() {
 	log.debug('models.User.generateJWT()...');
